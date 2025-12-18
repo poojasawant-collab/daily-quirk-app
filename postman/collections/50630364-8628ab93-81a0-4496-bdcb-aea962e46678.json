@@ -1,0 +1,730 @@
+{
+	"info": {
+		"_postman_id": "50630364-8628ab93-81a0-4496-bdcb-aea962e46678",
+		"name": "Daily Quirks API",
+		"description": "A RESTful API for the Daily Quirks application - serving daily doses of wisdom, humor, and motivation.\n\n## Base URL\n`http://localhost:3000/api`\n\n## Categories\n- **wisdom** - Thoughtful insights and life lessons\n- **humor** - Funny and lighthearted messages\n- **motivation** - Inspiring and encouraging quotes\n\n## Getting Started\n1. Start the server: `npm start`\n2. Server runs on `http://localhost:3000`\n3. Use these endpoints to interact with quirks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Quirks",
+			"item": [
+				{
+					"name": "Get All Quirks",
+					"id": "50630364-b24dea05-dc92-4dc1-b4aa-7a358186b636",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/quirks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quirks"
+							]
+						},
+						"description": "Retrieve all quirks from the database. Optionally filter by category using query parameter."
+					},
+					"response": [
+						{
+							"id": "50630364-fb1c3056-c8b7-4db5-b70b-5116dcc4ec79",
+							"name": "Success - All Quirks",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/quirks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": true,\n  \"count\": 15,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"text\": \"Today's vibe: Pretending to understand cryptocurrency while nodding confidently.\",\n      \"category\": \"humor\",\n      \"createdAt\": \"2024-01-01T00:00:00.000Z\"\n    },\n    {\n      \"id\": 2,\n      \"text\": \"Remember: Every expert was once a beginner who refused to give up.\",\n      \"category\": \"motivation\",\n      \"createdAt\": \"2024-01-02T00:00:00.000Z\"\n    },\n    {\n      \"id\": 3,\n      \"text\": \"The best time to plant a tree was 20 years ago. The second best time is now.\",\n      \"category\": \"wisdom\",\n      \"createdAt\": \"2024-01-03T00:00:00.000Z\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Quirks by Category",
+					"id": "50630364-5db46cd8-0760-42d8-92e6-454cb44452d2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/quirks?category=humor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quirks"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "humor",
+									"description": "Filter by category: wisdom, humor, or motivation"
+								}
+							]
+						},
+						"description": "Retrieve quirks filtered by a specific category (wisdom, humor, or motivation)."
+					},
+					"response": [
+						{
+							"id": "50630364-24f4899a-04f2-431c-89a3-93a5f06d8b31",
+							"name": "Success - Humor Quirks",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/quirks?category=humor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "humor"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": true,\n  \"count\": 5,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"text\": \"Today's vibe: Pretending to understand cryptocurrency while nodding confidently.\",\n      \"category\": \"humor\",\n      \"createdAt\": \"2024-01-01T00:00:00.000Z\"\n    },\n    {\n      \"id\": 4,\n      \"text\": \"Coffee: Because adulting is hard and naps are frowned upon at work.\",\n      \"category\": \"humor\",\n      \"createdAt\": \"2024-01-04T00:00:00.000Z\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Today's Quirk",
+					"id": "50630364-3d92f0de-00e4-40dc-ac10-4e2bccd558b7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/quirks/today",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quirks",
+								"today"
+							]
+						},
+						"description": "Get the quirk of the day. The quirk rotates based on the current date, ensuring a different quirk each day."
+					},
+					"response": [
+						{
+							"id": "50630364-3f908733-02e2-4ad7-bc15-a032d562aa7c",
+							"name": "Success - Today's Quirk",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/quirks/today",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks",
+										"today"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 5,\n    \"text\": \"Your comfort zone is a beautiful place, but nothing ever grows there.\",\n    \"category\": \"motivation\",\n    \"createdAt\": \"2024-01-05T00:00:00.000Z\"\n  },\n  \"date\": \"2024-01-15\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Random Quirk",
+					"id": "50630364-09913c39-ac37-49ba-bf8e-85ffe57020d6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/quirks/random",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quirks",
+								"random"
+							]
+						},
+						"description": "Get a randomly selected quirk from the collection. Great for a 'surprise me' feature."
+					},
+					"response": [
+						{
+							"id": "50630364-96319452-3435-44ce-b205-1897c11c0a29",
+							"name": "Success - Random Quirk",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/quirks/random",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks",
+										"random"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 9,\n    \"text\": \"I'm not lazy, I'm on energy-saving mode.\",\n    \"category\": \"humor\",\n    \"createdAt\": \"2024-01-09T00:00:00.000Z\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Quirk by ID",
+					"id": "50630364-3b1ad6be-4b10-4949-873a-f9b1d9a91797",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/quirks/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quirks",
+								"1"
+							]
+						},
+						"description": "Retrieve a specific quirk by its unique ID."
+					},
+					"response": [
+						{
+							"id": "50630364-c3230fff-89fe-4dad-b263-e28ccebbe107",
+							"name": "Success - Quirk Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/quirks/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"text\": \"Today's vibe: Pretending to understand cryptocurrency while nodding confidently.\",\n    \"category\": \"humor\",\n    \"createdAt\": \"2024-01-01T00:00:00.000Z\"\n  }\n}"
+						},
+						{
+							"id": "50630364-ec032a51-1068-4d09-a3be-d0f2973b8a02",
+							"name": "Error - Quirk Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/quirks/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks",
+										"999"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": false,\n  \"error\": \"Quirk not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create New Quirk",
+					"id": "50630364-40077410-bae5-4d93-99f7-4e433892fa94",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"Life is like WiFi - the best connections are invisible.\",\n  \"category\": \"wisdom\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/quirks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quirks"
+							]
+						},
+						"description": "Create a new quirk. Requires 'text' and 'category' fields. Category must be one of: wisdom, humor, motivation."
+					},
+					"response": [
+						{
+							"id": "50630364-4d8ac723-8272-4e17-a149-afce4a59bc21",
+							"name": "Success - Quirk Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"Life is like WiFi - the best connections are invisible.\",\n  \"category\": \"wisdom\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/quirks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 16,\n    \"text\": \"Life is like WiFi - the best connections are invisible.\",\n    \"category\": \"wisdom\",\n    \"createdAt\": \"2024-01-15T10:30:00.000Z\"\n  }\n}"
+						},
+						{
+							"id": "50630364-c3227d8d-068e-48e6-964d-598f0396a58f",
+							"name": "Error - Missing Fields",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"Missing category field\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/quirks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": false,\n  \"error\": \"Please provide both text and category\"\n}"
+						},
+						{
+							"id": "50630364-b1dac6dc-df2b-4c85-bbad-16b01473ea97",
+							"name": "Error - Invalid Category",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"Some quirk text\",\n  \"category\": \"invalid\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/quirks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": false,\n  \"error\": \"Category must be one of: wisdom, humor, motivation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Quirk",
+					"id": "50630364-595ddcc2-4193-4348-979b-8e39f7940e98",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"Updated: Your comfort zone is nice, but magic happens outside of it.\",\n  \"category\": \"motivation\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/quirks/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quirks",
+								"1"
+							]
+						},
+						"description": "Update an existing quirk's text and/or category. Both fields are optional - only provided fields will be updated."
+					},
+					"response": [
+						{
+							"id": "50630364-17b5e007-c622-4a55-beb3-b0b2aaabed88",
+							"name": "Success - Quirk Updated",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"Updated: Your comfort zone is nice, but magic happens outside of it.\",\n  \"category\": \"motivation\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/quirks/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"text\": \"Updated: Your comfort zone is nice, but magic happens outside of it.\",\n    \"category\": \"motivation\",\n    \"createdAt\": \"2024-01-01T00:00:00.000Z\"\n  }\n}"
+						},
+						{
+							"id": "50630364-4b136b01-d6c9-477b-a269-315f9c41ccb9",
+							"name": "Error - Quirk Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"Updated text\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/quirks/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks",
+										"999"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": false,\n  \"error\": \"Quirk not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Quirk",
+					"id": "50630364-c9b2f458-916f-4ead-9fb4-56f096b56fdc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/quirks/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quirks",
+								"1"
+							]
+						},
+						"description": "Delete a quirk by its ID. Returns the deleted quirk data on success."
+					},
+					"response": [
+						{
+							"id": "50630364-30f1b97b-4593-4ce2-a04a-b0ffad3d838f",
+							"name": "Success - Quirk Deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/quirks/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"text\": \"Today's vibe: Pretending to understand cryptocurrency while nodding confidently.\",\n    \"category\": \"humor\",\n    \"createdAt\": \"2024-01-01T00:00:00.000Z\"\n  },\n  \"message\": \"Quirk deleted successfully\"\n}"
+						},
+						{
+							"id": "50630364-021f5c54-2571-4d69-a6aa-a3a832b0c081",
+							"name": "Error - Quirk Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/quirks/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"quirks",
+										"999"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"success\": false,\n  \"error\": \"Quirk not found\"\n}"
+						}
+					]
+				}
+			],
+			"id": "50630364-21e53570-8e3b-4f9b-a4a0-166ca43425ad",
+			"description": "Endpoints for managing quirks - daily doses of wisdom, humor, and motivation."
+		}
+	]
+}
