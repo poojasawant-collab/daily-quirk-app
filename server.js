@@ -39,6 +39,16 @@ const getTodaysQuirk = () => {
 
 // Routes
 
+// GET /api/health - Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    success: true,
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
 // GET /api/quirks/today - Get today's quirk (must be before /:id route)
 app.get('/api/quirks/today', (req, res) => {
   const todaysQuirk = getTodaysQuirk();
