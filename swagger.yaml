@@ -1,0 +1,469 @@
+openapi: 3.0.0
+info:
+  title: Daily Quirks API
+  description: A RESTful API backend for the Daily Quirks application, serving daily doses of wisdom, humor, and motivation.
+  version: 1.0.0
+  contact:
+    name: API Support
+  license:
+    name: MIT
+
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+tags:
+  - name: Health
+    description: Health check endpoints
+  - name: Quirks
+    description: Operations related to quirks
+
+paths:
+  /api/health:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Check if the API server is running and healthy
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Server is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              example:
+                success: true
+                status: healthy
+                timestamp: '2024-01-15T10:30:00.000Z'
+                uptime: 1234.567
+
+  /api/quirks:
+    get:
+      tags:
+        - Quirks
+      summary: Get all quirks
+      description: Retrieve all quirks, optionally filtered by category
+      operationId: getAllQuirks
+      parameters:
+        - name: category
+          in: query
+          description: Filter by category
+          required: false
+          schema:
+            type: string
+            enum:
+              - wisdom
+              - humor
+              - motivation
+          example: humor
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuirksListResponse'
+              example:
+                success: true
+                count: 15
+                data:
+                  - id: 1
+                    text: "Today's vibe: Pretending to understand cryptocurrency while nodding confidently."
+                    category: humor
+                    createdAt: '2024-01-01T00:00:00.000Z'
+
+    post:
+      tags:
+        - Quirks
+      summary: Create a new quirk
+      description: Add a new quirk to the collection
+      operationId: createQuirk
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateQuirkRequest'
+            example:
+              text: Life is like WiFi - the best connections are invisible.
+              category: wisdom
+      responses:
+        '201':
+          description: Quirk created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuirkResponse'
+              example:
+                success: true
+                data:
+                  id: 16
+                  text: Life is like WiFi - the best connections are invisible.
+                  category: wisdom
+                  createdAt: '2024-01-15T10:30:00.000Z'
+        '400':
+          description: Bad request - validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                error: Please provide both text and category
+
+  /api/quirks/today:
+    get:
+      tags:
+        - Quirks
+      summary: Get today's quirk
+      description: Get the quirk of the day (rotates based on the current date)
+      operationId: getTodaysQuirk
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodaysQuirkResponse'
+              example:
+                success: true
+                data:
+                  id: 5
+                  text: Your comfort zone is a beautiful place, but nothing ever grows there.
+                  category: motivation
+                  createdAt: '2024-01-05T00:00:00.000Z'
+                date: '2024-01-15'
+
+  /api/quirks/random:
+    get:
+      tags:
+        - Quirks
+      summary: Get random quirk
+      description: Get a randomly selected quirk
+      operationId: getRandomQuirk
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuirkResponse'
+              example:
+                success: true
+                data:
+                  id: 9
+                  text: I'm not lazy, I'm on energy-saving mode.
+                  category: humor
+                  createdAt: '2024-01-09T00:00:00.000Z'
+
+  /api/quirks/{id}:
+    get:
+      tags:
+        - Quirks
+      summary: Get quirk by ID
+      description: Retrieve a specific quirk by its ID
+      operationId: getQuirkById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The quirk's unique ID
+          schema:
+            type: integer
+            minimum: 1
+          example: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuirkResponse'
+              example:
+                success: true
+                data:
+                  id: 1
+                  text: "Today's vibe: Pretending to understand cryptocurrency while nodding confidently."
+                  category: humor
+                  createdAt: '2024-01-01T00:00:00.000Z'
+        '404':
+          description: Quirk not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                error: Quirk not found
+
+    put:
+      tags:
+        - Quirks
+      summary: Update a quirk
+      description: Update an existing quirk's text or category
+      operationId: updateQuirk
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The quirk's unique ID
+          schema:
+            type: integer
+            minimum: 1
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateQuirkRequest'
+            example:
+              text: Updated quirk text here
+              category: motivation
+      responses:
+        '200':
+          description: Quirk updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuirkResponse'
+              example:
+                success: true
+                data:
+                  id: 1
+                  text: Updated quirk text here
+                  category: motivation
+                  createdAt: '2024-01-01T00:00:00.000Z'
+        '400':
+          description: Bad request - validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                error: Category must be one of: wisdom, humor, motivation
+        '404':
+          description: Quirk not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                error: Quirk not found
+
+    delete:
+      tags:
+        - Quirks
+      summary: Delete a quirk
+      description: Remove a quirk from the collection
+      operationId: deleteQuirk
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The quirk's unique ID
+          schema:
+            type: integer
+            minimum: 1
+          example: 1
+      responses:
+        '200':
+          description: Quirk deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteQuirkResponse'
+              example:
+                success: true
+                data:
+                  id: 1
+                  text: "Today's vibe: Pretending to understand cryptocurrency while nodding confidently."
+                  category: humor
+                  createdAt: '2024-01-01T00:00:00.000Z'
+                message: Quirk deleted successfully
+        '404':
+          description: Quirk not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                error: Quirk not found
+
+components:
+  schemas:
+    Quirk:
+      type: object
+      required:
+        - id
+        - text
+        - category
+        - createdAt
+      properties:
+        id:
+          type: integer
+          description: Unique identifier
+          example: 1
+        text:
+          type: string
+          description: The quirk message
+          example: "Today's vibe: Pretending to understand cryptocurrency while nodding confidently."
+        category:
+          type: string
+          enum:
+            - wisdom
+            - humor
+            - motivation
+          description: Category of the quirk
+          example: humor
+        createdAt:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp when the quirk was created
+          example: '2024-01-01T00:00:00.000Z'
+
+    HealthResponse:
+      type: object
+      required:
+        - success
+        - status
+        - timestamp
+        - uptime
+      properties:
+        success:
+          type: boolean
+          example: true
+        status:
+          type: string
+          example: healthy
+        timestamp:
+          type: string
+          format: date-time
+          example: '2024-01-15T10:30:00.000Z'
+        uptime:
+          type: number
+          format: float
+          description: Server uptime in seconds
+          example: 1234.567
+
+    QuirkResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: '#/components/schemas/Quirk'
+
+    TodaysQuirkResponse:
+      type: object
+      required:
+        - success
+        - data
+        - date
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: '#/components/schemas/Quirk'
+        date:
+          type: string
+          format: date
+          description: Current date in YYYY-MM-DD format
+          example: '2024-01-15'
+
+    QuirksListResponse:
+      type: object
+      required:
+        - success
+        - count
+        - data
+      properties:
+        success:
+          type: boolean
+          example: true
+        count:
+          type: integer
+          description: Number of quirks returned
+          example: 15
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Quirk'
+
+    CreateQuirkRequest:
+      type: object
+      required:
+        - text
+        - category
+      properties:
+        text:
+          type: string
+          description: The quirk message
+          minLength: 1
+          example: Life is like WiFi - the best connections are invisible.
+        category:
+          type: string
+          enum:
+            - wisdom
+            - humor
+            - motivation
+          description: Category of the quirk
+          example: wisdom
+
+    UpdateQuirkRequest:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Updated quirk message
+          minLength: 1
+          example: Updated quirk text here
+        category:
+          type: string
+          enum:
+            - wisdom
+            - humor
+            - motivation
+          description: Updated category
+          example: motivation
+
+    DeleteQuirkResponse:
+      type: object
+      required:
+        - success
+        - data
+        - message
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: '#/components/schemas/Quirk'
+        message:
+          type: string
+          example: Quirk deleted successfully
+
+    ErrorResponse:
+      type: object
+      required:
+        - success
+        - error
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          description: Error message
+          example: Quirk not found
+
