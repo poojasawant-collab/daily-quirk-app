@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Get All Quirks",
-					"id": "50630364-4239110b-d300-47b8-b8af-4004b9432f06",
+					"id": "50630364-d97b6599-0aa3-43c1-ab0d-bd951c4b7500",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -31,7 +31,7 @@
 					},
 					"response": [
 						{
-							"id": "50630364-fc9d1297-7c63-4d82-b6e4-ac00851b5d3a",
+							"id": "50630364-8bf7bdbe-f42f-4274-9ac0-fe6ab3a7e871",
 							"name": "Success - All Quirks",
 							"originalRequest": {
 								"method": "GET",
@@ -66,7 +66,7 @@
 				},
 				{
 					"name": "Get Quirks by Category",
-					"id": "50630364-d6f0f30b-31b4-4107-93c2-bde28db6e52c",
+					"id": "50630364-2071c7b1-6dba-439d-a33f-99f29247192c",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -93,7 +93,7 @@
 					},
 					"response": [
 						{
-							"id": "50630364-c4c4f096-b61e-445c-bf1c-d9b096416091",
+							"id": "50630364-394401aa-27be-4ff7-8075-5ffae2d7f39b",
 							"name": "Success - Humor Quirks",
 							"originalRequest": {
 								"method": "GET",
@@ -134,7 +134,7 @@
 				},
 				{
 					"name": "Get Today's Quirk",
-					"id": "50630364-9ae33d16-879e-49e8-b824-9a3abf0bc5ae",
+					"id": "50630364-d5eb6999-26ee-4440-b8f6-2d920cc37474",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -155,7 +155,7 @@
 					},
 					"response": [
 						{
-							"id": "50630364-99523cc2-65bf-4d4a-b8bd-81a873fcd813",
+							"id": "50630364-36f1d1fe-5e91-4976-8e31-4e68013afc60",
 							"name": "Success - Today's Quirk",
 							"originalRequest": {
 								"method": "GET",
@@ -191,7 +191,7 @@
 				},
 				{
 					"name": "Get Random Quirk",
-					"id": "50630364-9f9ab212-3db1-428d-bc88-492279d46193",
+					"id": "50630364-a536130f-b7e3-4c9c-bee2-a0c137bdce9d",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -212,7 +212,7 @@
 					},
 					"response": [
 						{
-							"id": "50630364-b7901c3f-f56b-4ab4-8415-d58434ea2887",
+							"id": "50630364-96318463-2b64-434e-95d4-f865306c40f3",
 							"name": "Success - Random Quirk",
 							"originalRequest": {
 								"method": "GET",
@@ -248,7 +248,7 @@
 				},
 				{
 					"name": "Get Quirk by ID",
-					"id": "50630364-bee4abbe-5aac-44cb-8a83-933ee252f2b2",
+					"id": "50630364-2f4437f5-b60d-4dba-a9ed-8d47a6b6cc33",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -269,7 +269,7 @@
 					},
 					"response": [
 						{
-							"id": "50630364-c85e0801-2348-4054-ab58-ca2d3445026a",
+							"id": "50630364-61dd53c3-287d-469c-9808-2482abf6916a",
 							"name": "Success - Quirk Found",
 							"originalRequest": {
 								"method": "GET",
@@ -302,7 +302,7 @@
 							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"text\": \"Today's vibe: Pretending to understand cryptocurrency while nodding confidently.\",\n    \"category\": \"humor\",\n    \"createdAt\": \"2024-01-01T00:00:00.000Z\"\n  }\n}"
 						},
 						{
-							"id": "50630364-9ed9cddc-9e09-4143-a76a-25c55f024856",
+							"id": "50630364-d0223bc7-9ca2-4eb4-acc6-e1e97bbc8bba",
 							"name": "Error - Quirk Not Found",
 							"originalRequest": {
 								"method": "GET",
@@ -338,7 +338,7 @@
 				},
 				{
 					"name": "Create New Quirk",
-					"id": "50630364-94c2fd1c-0bff-4b80-8c4d-0cb05a9008af",
+					"id": "50630364-0afdd34c-dcff-4f02-ba53-b295a7f751bb",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -372,7 +372,7 @@
 					},
 					"response": [
 						{
-							"id": "50630364-a6152fcd-2c50-4809-a600-dd81723a3f35",
+							"id": "50630364-19db29e3-7a5a-4cc8-b1d8-74c8b5a7dc92",
 							"name": "Success - Quirk Created",
 							"originalRequest": {
 								"method": "POST",
@@ -418,7 +418,7 @@
 							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 16,\n    \"text\": \"Life is like WiFi - the best connections are invisible.\",\n    \"category\": \"wisdom\",\n    \"createdAt\": \"2024-01-15T10:30:00.000Z\"\n  }\n}"
 						},
 						{
-							"id": "50630364-5fc0dce6-c861-4147-beaf-eb8115543191",
+							"id": "50630364-b5ea2924-3154-4f6d-b1c4-64fcd268da12",
 							"name": "Error - Missing Fields",
 							"originalRequest": {
 								"method": "POST",
@@ -464,7 +464,7 @@
 							"body": "{\n  \"success\": false,\n  \"error\": \"Please provide both text and category\"\n}"
 						},
 						{
-							"id": "50630364-2e35bf68-8b52-4216-80c4-b2c0ca9b1ae4",
+							"id": "50630364-b225d17d-a4e2-4943-aaae-cd05e63c7c48",
 							"name": "Error - Invalid Category",
 							"originalRequest": {
 								"method": "POST",
@@ -513,7 +513,7 @@
 				},
 				{
 					"name": "Update Quirk",
-					"id": "50630364-9ae154c4-32aa-4bde-9b8c-f373847c738f",
+					"id": "50630364-1bcefeec-d927-4233-ab78-605dc966a9fa",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -548,7 +548,7 @@
 					},
 					"response": [
 						{
-							"id": "50630364-9bf47945-972d-488c-8db1-fb5c988d2ada",
+							"id": "50630364-337b39ae-4caa-4550-90c5-e5cbeafb129d",
 							"name": "Success - Quirk Updated",
 							"originalRequest": {
 								"method": "PUT",
@@ -595,7 +595,7 @@
 							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"text\": \"Updated: Your comfort zone is nice, but magic happens outside of it.\",\n    \"category\": \"motivation\",\n    \"createdAt\": \"2024-01-01T00:00:00.000Z\"\n  }\n}"
 						},
 						{
-							"id": "50630364-3e7c5868-fc1c-46e0-a491-946a5ac99720",
+							"id": "50630364-aaeb7094-4716-4ad5-b37d-1000489cdccb",
 							"name": "Error - Quirk Not Found",
 							"originalRequest": {
 								"method": "PUT",
@@ -645,7 +645,7 @@
 				},
 				{
 					"name": "Delete Quirk",
-					"id": "50630364-971ee22f-b99d-4641-8209-913b52f4194f",
+					"id": "50630364-8479c540-7ef4-4bdc-855f-20b2baefabda",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -666,7 +666,7 @@
 					},
 					"response": [
 						{
-							"id": "50630364-ca92b268-a0c4-42b2-a875-2d54dcc0576b",
+							"id": "50630364-7bc12172-f55b-446c-89f2-d06973c3bf77",
 							"name": "Success - Quirk Deleted",
 							"originalRequest": {
 								"method": "DELETE",
@@ -699,7 +699,7 @@
 							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"text\": \"Today's vibe: Pretending to understand cryptocurrency while nodding confidently.\",\n    \"category\": \"humor\",\n    \"createdAt\": \"2024-01-01T00:00:00.000Z\"\n  },\n  \"message\": \"Quirk deleted successfully\"\n}"
 						},
 						{
-							"id": "50630364-ed866e38-d5a2-4aff-9422-469e08347fe0",
+							"id": "50630364-40df2882-1d4c-4098-bc28-da4390748cf5",
 							"name": "Error - Quirk Not Found",
 							"originalRequest": {
 								"method": "DELETE",
@@ -734,12 +734,12 @@
 					]
 				}
 			],
-			"id": "50630364-54679b14-d286-41e0-a7cb-6825a966c8eb",
+			"id": "50630364-fe18da47-99d7-42f0-9cb4-fec2b69b5e21",
 			"description": "Endpoints for managing quirks - daily doses of wisdom, humor, and motivation."
 		},
 		{
 			"name": "Health Check",
-			"id": "50630364-7195347e-5d37-40c4-9bd1-20a3199fe138",
+			"id": "50630364-2e094182-61ad-4a1b-be63-7494fe6d6089",
 			"request": {
 				"method": "GET",
 				"header": [],
